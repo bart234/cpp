@@ -1,0 +1,1 @@
+1 my own arcanoid game - That simple was made before i read any books about sfml. There is no oop, no additional classes. It was build to figure out game logic. Game woked but requre openal32.dll. Alse there is issue which i know: ball sometimes goin through walls- reason: lack of frame limit.

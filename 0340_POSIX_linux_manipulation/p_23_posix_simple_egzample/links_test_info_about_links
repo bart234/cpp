@@ -1,0 +1,13 @@
+hard link is like smart pointer 
+- creation: ls -ln <my_sourcefile> <my output file>
+- has a occurance counter
+- using ls -li: it point to same part of memory
+- cannot link PATHS ON DIFFRENT PARTITIONS
+
+soft link - symbolic link
+- creation: ls -s  <my_sourcefile> <my output file>
+- somehting like shortcut in windows - you can delete it but file remain
+- has it own permissions, and point in diffrent place at memory
+- it reffering to path name, not to file itself
+- can point ACROSS PARTITIONS
+- we can delete source file, and symlink will be still exist
