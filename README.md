@@ -14,3 +14,4 @@ Repository info:
 Each folder contain some descriptions about each project inside. Projects folders contain my own projects. 
 Other folders have many things divided by topicks, like processed egzaples from books and courses very often developed in some way and tested in another way. I dont store here clean codes ones copied from other sources, all that code was wrote by me (in hard topicks 1:1) with comments and my stiupid errors.
 
+I have a lot smaller or bigger files and projects, i will adjust it and clean but it is process, because that all files ale from many years.

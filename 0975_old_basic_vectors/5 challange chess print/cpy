@@ -1,0 +1,21 @@
+
+/*game loop, showing menu, drawing board and elements*/
+/*start/end game, control game flow,control drawing, declare winer*/
+
+
+class PLayer
+{
+    std::string& name;
+
+
+};
+
+/*2x board with default size 8, set in v<v<base_obj>*/
+/*store chess pices, set pice at ,get pice at*/
+
+
+class Field
+{
+    bool is_empty{true};
+    ChessPiece & figure_at;
+};
