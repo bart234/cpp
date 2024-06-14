@@ -16,9 +16,13 @@ namespace p_template
 
     class ColdDrink
     {
+        private:
+            bool with_dedication;
+            std::string dedication_name;
         public:
         void prepareDrink()
         {
+
             gatherIngridients();
             additionalStep_1();         //used only in some class- overriten wher needed
             prepareIngridients();
@@ -32,12 +36,34 @@ namespace p_template
         virtual void additionalStep_1(){};
         virtual void mixIt(){cout<<"...mix it..."<<endl;};
         virtual void prepareToDrink()=0;
+
+        bool dedicationRequired()
+
+
     };
 
-    class SmootheGreen: public ColdDrink
+    class SmoothDedicationCarrot: public ColdDrink
     {
         public:
         //void gatherIngridients(){};
+
+        void additionalStep_1()
+        
+        void prepareIngridients(){cout<<"..cut Carrots and Apples..."<<endl;};
+        //virtual void cutWegetables();
+
+        //void mixIt(){};
+        
+        void prepareToDrink(){cout<<"..pourIntoGlass..."<<endl;};
+        //void pourIntoGlass();
+    };
+
+    class SmootheGreen: public ColdDrink    //raw overwrite =0
+    {
+        
+        public:
+        //void gatherIngridients(){};
+
         
         void prepareIngridients(){cout<<"..cutWegetables..."<<endl;};
         //virtual void cutWegetables();
@@ -48,7 +74,7 @@ namespace p_template
         //void pourIntoGlass();
     };
 
-    class IceShake: public ColdDrink
+    class IceShake: public ColdDrink    //overriten =0 + common dummy methhod
     {
         //void gatherIngridients();
 

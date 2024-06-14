@@ -10,9 +10,5 @@ int main()
 
     //fork_processes::run_few_forks();                 //#include <unistd.h>
     //fork_processes::just_one_fork();
-
-    //semaphores::semaphores_on_phthread::run_me_semaphores_1();
-    semaphores::semaphores_logic::
-    
     return 0;
 }
