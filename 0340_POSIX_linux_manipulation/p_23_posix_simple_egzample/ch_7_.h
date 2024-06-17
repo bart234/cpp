@@ -349,6 +349,7 @@ namespace atomic_spin_lock
 
 namespace shm_egz_one
 {
+    //moved into 0350.1
     string_view SHM_MAIN_SHMM_ID        = "/test_shm";
     string_view SEMAPHORE_PRODUCER_ID         = "/test_shm_prod";
     string_view SEMAPHORE_CONSUMER_ID         = "/test_shm";

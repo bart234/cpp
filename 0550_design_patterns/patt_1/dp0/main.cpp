@@ -7,6 +7,17 @@ using namespace std;
 namespace first_approach
 {
     ////-------Ears shape
+    class EarsShape
+    {
+        public:
+        virtual void earShape()=0;
+    };
+
+    class BigDroopyEars: public EarsShape
+    {
+        public:
+        virtual void earShape(){std::cout<<"Ears: Big Droppy Ears"<<std::endl;};
+    };
 
     ////-------Sounds --------
     class Sound

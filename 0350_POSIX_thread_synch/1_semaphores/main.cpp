@@ -20,6 +20,8 @@ int main()
     //semaphores::semaphores_on_phthread::run_me_semaphores_two_threads();
     //semaphores::semaphores_on_phthread::run_me_semaphore_mutiple_threads();
     //semaphores::semaphores_on_phthread::run_me_semaphore_multiple_threads_sem_eq_2();
-    semaphores::semaphores_on_phthread::run_me_semaphores_login_queue();
+    //semaphores::semaphores_on_phthread::run_me_semaphores_login_queue();
+    
+    semaphores::semaphores_on_shm_and_diffrent_threads::run_me_shm_fork_one_producer_one_consumer();
     return 0;
 }
