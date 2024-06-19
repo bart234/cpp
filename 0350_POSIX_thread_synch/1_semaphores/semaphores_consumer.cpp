@@ -7,18 +7,18 @@ int main()
     std::string SEMAPHORE_CONSUMER_ID =     "/test_shm_cons";
     std::string SHM_MAIN_SHMM_ID =          "/test_shm";
     uint BLOCK_SIZE_IN_SHM =                1024;   
-    sem_t* semaphore_producer;
-    sem_t* semaphore_consumer;
+    sem_t* semaphore_producer{nullptr};
+    sem_t* semaphore_consumer{nullptr};
 
     int resized_shm_size    =0;
     int file_descriptor     =0;
     void *shm_address       =NULL;
 
-    sem_unlink(SEMAPHORE_PRODUCER_ID.c_str());
-    sem_unlink(SEMAPHORE_CONSUMER_ID.c_str());
+    //sem_unlink(SEMAPHORE_PRODUCER_ID.c_str());
+    //sem_unlink(SEMAPHORE_CONSUMER_ID.c_str());
     
-    sem_t* semaphore_producer = sem_open(SEMAPHORE_PRODUCER_ID.c_str(),O_CREAT,0660,0);    
-    sem_t* semaphore_consumer = sem_open(SEMAPHORE_CONSUMER_ID.c_str(),O_CREAT,0660,1);
+    semaphore_producer = sem_open(SEMAPHORE_PRODUCER_ID.c_str(),O_CREAT,0660,0);    
+    semaphore_consumer = sem_open(SEMAPHORE_CONSUMER_ID.c_str(),O_CREAT,0660,1);
     //no error check if semaphore_producer==-1 perror("text") exit(EXIT_FAILURE)
 
     //----------------------------------DATA CONSUMER------------------------------------------------------            

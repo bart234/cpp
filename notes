@@ -1,0 +1,16 @@
+
+
+
+pthread
+it use as funciton - pointer or ref
+it took one argument  for that function
+if you want to add more - make struct for them
+you pass ref to structure and in funciton it land as void pointer
+you need to recast it to correct pointer 
+
+void* f_to_sum_part_of_arr3(void *arg)
+{             
+    int temp{};
+    struct my_args2 *my_temp_struct;
+    my_temp_struct =(my_args2*)arg;
+    

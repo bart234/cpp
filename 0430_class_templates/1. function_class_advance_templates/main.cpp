@@ -188,8 +188,7 @@ namespace TemplateClass_in_use_MyArr
     {
         MyArr<5> arr_1;
         cout<<arr_1<<endl;
-    }
-    
+    }    
 }
 
 
