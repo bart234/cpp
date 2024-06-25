@@ -2,6 +2,8 @@
 
 
 pthread
+Unlike a real process, the thread normally shares its memory with other threads
+ (where as for processes we usually have a different memory area for each one of them).
 it use as funciton - pointer or ref
 it took one argument  for that function
 if you want to add more - make struct for them
@@ -14,3 +16,4 @@ void* f_to_sum_part_of_arr3(void *arg)
     struct my_args2 *my_temp_struct;
     my_temp_struct =(my_args2*)arg;
     
+

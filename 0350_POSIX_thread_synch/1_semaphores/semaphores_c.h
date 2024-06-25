@@ -172,7 +172,6 @@ namespace semaphores
             int resized_shm_size    =0;
             int file_descriptor     =0;
             void *shm_address       =NULL;
-
             int child_pid           =fork();
 
             if(child_pid==0)
