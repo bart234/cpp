@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <mutex>
 
 //using std::cout;
 //using std::endl;
@@ -150,11 +151,64 @@ namespace threading_type_of_threads
 
 namespace threading_MUTEX
 {
+    int my_val=0;
+    std::mutex my_mutex;
 
-void my_main()
-{
 
-};
+
+
+    
+    namespace simple_thread_with_mutex
+    {
+        using namespace std::literals::chrono_literals;
+
+        void addMe(int add)
+        {
+            my_mutex.lock();
+            cout<<"Thread id: "<<std::this_thread::get_id()<<endl;
+            cout<<"Val before: "<<my_val<<std::endl;
+            my_val+=add; 
+            cout<<"Val after: "<<my_val<<std::endl;
+            my_mutex.unlock();
+        }
+
+        void run_me()
+        {
+            std::thread t1(addMe,1);
+            std::thread t2(addMe,-5);
+            t1.join();
+            t2.join();
+            std::this_thread::sleep_for(1s);
+            std::cout<<"Result is: "<<my_val<<std::endl;
+        }
+
+    }
+
+    void simple_thread()
+    {   
+        std::array<std::thread, 5> th_array;
+
+        const auto worker_lambda
+        {
+            []
+            {
+                const auto th_id = std::this_thread::get_id();
+                cout<<"thread id: "<<th_id<<endl;
+            }
+        };
+
+        for(auto &t:th_array)
+        {
+            t=std::thread(worker_lambda);
+        }
+
+        for(auto &t: th_array)
+        {
+            t.join();
+        }
+
+        cout<<"Main thred is: "<<std::this_thread::get_id()<<endl;
+    };
 
 };
 
@@ -172,10 +226,12 @@ between moment of std::thread ... and join() - we ahve to wait  until it will fi
 int main()
 {
     //threadingGeneralInfo::threadin_general_info(); //general how to use threat anc clock
-    threadingGeneralInfo::threading_detach_eg();
+    //threadingGeneralInfo::threading_detach_eg();
 
     //threading_type_of_threads::my_main();         //kind of function which can be able to put into thread and HOW TO
 
-    threading_MUTEX::my_main();  // MUTEX - mutal exclusion - when more thread want access to  only one resource, to write
+    //threading_MUTEX::my_main();  // MUTEX - mutal exclusion - when more thread want access to  only one resource, to write
 
+    //threading_MUTEX::simple_thread();
+    threading_MUTEX::simple_thread_with_mutex::run_me();
 }

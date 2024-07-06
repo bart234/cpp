@@ -36,10 +36,10 @@ int main()
     //printf(ptr, "%s", msg_1);
     
     ptr+= sizeof(msg_1);
-    sprintf(ptr,"%s",msg_1);
+    //sprintf(ptr,"%s",msg_1);
     
     ptr+= sizeof(msg_2);
-    sprintf(ptr,"%s",msg_2);
+    //sprintf(ptr,"%s",msg_2);
     
     return 0;
 }

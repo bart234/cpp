@@ -18,7 +18,7 @@ class A
     A(A&& to_move) noexcept:
         n(std::move((to_move.n))),
         s(std::move((to_move.s)))
-        {std::cout<<"A move tor"<<std::endl;}
+        {std::cout<<"A move ctor"<<std::endl;}
     
     ~A(){std::cout<<"A dctor"<<std::endl;}
 
