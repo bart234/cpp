@@ -1,6 +1,7 @@
-#ifndef SOURCES_H
-#define SOURCES_H
-#include "sources.h"
+#include <iostream>
+#include <thread>
+
+using namespace std;
 
 //each thread has its own copy of all object with automatic storage duration - the stack objects
 namespace chapter_6_cocurrent_sys_programing
@@ -37,10 +38,10 @@ namespace chapter_6_cocurrent_sys_programing
             balance = temp-amount;
             cout<<"Acc: " + owner + " Balance after -=: "<<balance<<endl;
             return *this;
-        }
-
-        
+        }        
     };
+
+    
     void TransferMoney(unsigned ammount, Account &from, Account &to)
         {
             from-=ammount;
@@ -68,10 +69,7 @@ namespace chapter_6_cocurrent_sys_programing
 
       void run_me()
     {
-        cout<<"-------------ch6_start----------------"<<endl;
         eg_1_data_race_on_variable();
-        cout<<"-------------ch6_end----------------"<<endl;
     }
     
 }
-#endif

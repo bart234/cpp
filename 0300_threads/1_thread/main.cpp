@@ -3,9 +3,6 @@
 #include <thread>
 #include <mutex>
 
-//using std::cout;
-//using std::endl;
-//using std::cin;
 using namespace std;
 using namespace std::chrono;
 
@@ -82,7 +79,7 @@ namespace threadingGeneralInfo
 
 namespace threading_type_of_threads
 {
-    void funPointer(char c,int x)
+    void function_(char c,int x)
     {
         while( x --> 0)
             std::cout<<c<< " " <<to_string(x)<<std::endl;
@@ -129,23 +126,18 @@ namespace threading_type_of_threads
 
     void my_main()
     {
-        //MyThirdClass::run('f',99); --static
-
-        std::thread t1(funPointer,'a',11);
+        std::thread t1(function_,'a',11);
         std::thread t2(lambda_ptr,'l',10);
         std::thread t3((MyClass()),'f',10);
         MySecondClass my_instance;
         std::thread t4(&MySecondClass::run,&my_instance,'n',8); //to use it, you need object(here my_instance) to call this funciton (::run)
         std::thread t5(&MyThirdClass::run,'s',9);
 
-
-
         t1.join();
         t2.join();
         t3.join();
         t4.join();
         t5.join();
-
     }
 };
 
@@ -153,10 +145,6 @@ namespace threading_MUTEX
 {
     int my_val=0;
     std::mutex my_mutex;
-
-
-
-
     
     namespace simple_thread_with_mutex
     {

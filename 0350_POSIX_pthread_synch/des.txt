@@ -1,0 +1,32 @@
+ /*  SEMAPHORES  <semaphore.h> invented when dinosaurs rule the earth
+    - keep unsigned value 
+    - changes are atomic
+    - can be use as mutex 
+    - lock and unlock in diffrent threads (mutex cant do that)
+        USAGE
+    - sem_post(mutex_unlock) - increment value by one 
+    - sem_wati(mutex_lock) - decrement value
+                        - if value is 0 then it will wait
+                        - if value is >0 then decrement it and run
+    - sem_init(&my_semaphore, int_default_semaphor_value, int_number_of_process_which will use this semaphore)
+
+description for me for 0350:4_semaphores_shm_two_th_prod_cons
+Z Zycia Konsumenta                                                                              Z Zycia producenta
+Kierowniku semafor_1 ma flage 0,w sumie to czerwone,  drugi semafor semafor_2 zielone 
+ale konsument czeka semafor_1 (inne niz 0)
+-  wiec tak w sumie sobie jestem, no ale poczekam.
+                                                                            I oto na bialym koniu odpala sie drugi watek: Pan producent zapisujacy glupoty.
+                                                                            Pan producent ma dostep do semafora_1(0) - czerwone ale wow, semafor_2(1) - jest na zielono 
+                                                                            - wiec moge cos wyprodukowac - zabieram sie za produkcje - "nie musze bookowac shm bo mam zielone"
+                                                                            <produkuje>
+                                                                            -zapisze moj produkcik w shm by wszystkim bylo latwiej - moge bo semafor_1 jest na czerwono, wiec
+                                                                            tylok ja mam dostep    
+                                                                            -done - zrobione - produkcik zapisany - zmienie semafor_1 na zielony - by inni,jesli czekaja, 
+                                                                            mogli za bookowac shm i odczytac dane
+                                                                            -done - zapisuje....a nie, juz odczytuja bo mi zmienili semafor_2 na czerwone - no coz, wiec pcozekam
+- woo tak bez ostrzezenia, zmienilo sie na semaforze_1 na zielone
+- by odczytac musze zabookowac shm - zmienie flage na semaforze_2(sem_2-=1) na czerwone
+by mi nie dorzucali w trakcie czytania
+- ok sa dane, moge je odczytac 
+- done zapisane , jest cos jeszcze? nie
+- dobra zmieniam flage semafora_2 na zielony(sem_2+=1) - ja poczekam jak wyprodukujecie

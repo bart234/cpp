@@ -37,6 +37,7 @@ namespace parraleism_vs_concurency
             std::cout<<globalSum<<std::endl;
         }
     }
+    
     namespace base_algorythm_with_parallel_threads
     {      
         void* f_to_sum_part_of_arr(int& save_result_here, int start_place, int sum_num_of_el)
@@ -67,7 +68,6 @@ namespace parraleism_vs_concurency
 
     namespace  parallel_struct_passed_into_function
     {
-
         struct my_args2{
             int ref_result_save_here;
             int i_start_place;
@@ -80,11 +80,13 @@ namespace parraleism_vs_concurency
             struct my_args2 *my_temp_struct;
             my_temp_struct =(my_args2*)arg;
             
-            for(int i=my_temp_struct->i_start_place;i<my_temp_struct->i_start_place+my_temp_struct->sum_num_of_el;i++){
+            for(int i=my_temp_struct->i_start_place;
+                i<my_temp_struct->i_start_place+my_temp_struct->sum_num_of_el;
+                i++)
+            {
                 temp+=arr[i];
             }
-            my_temp_struct->ref_result_save_here=temp;
-            
+            my_temp_struct->ref_result_save_here=temp;            
         } 
 
         void run_me()
@@ -93,8 +95,7 @@ namespace parraleism_vs_concurency
             std::vector<int> result_viki{};
             int *arr_int[2]{};
             int th_number{2};
-            //pthread_t th_arr[th_number];
-            
+            //pthread_t th_arr[th_number];            
 
             for(int i=0;i<2;i++){                
                 my_args2 my_args_2{};
@@ -105,9 +106,6 @@ namespace parraleism_vs_concurency
                 //pthread_create(&th_arr[i],NULL,&f_to_sum_part_of_arr3,my_args_1);
                 f_to_sum_part_of_arr3(&my_args_2);
                 std::cout<<"For i="<<i<<" result is: "<<my_args_2.ref_result_save_here<<std::endl;
-
-                
-
             }
 
             for(int i =0;i<th_number;i++){delete arr_int[i];}
@@ -161,10 +159,6 @@ namespace parraleism_vs_concurency
             }
 
             for(int i =0;i<th_number;i++){pthread_join(th_arr[i],NULL);}
-
-            //for(int i =0;i<th_number;i++){delete arr_int[i];}
-            //for(auto &el:result_viki){globalSum+=el;}
-            //std::cout<<globalSum<<std::endl;
         }    
     }
 
@@ -325,9 +319,9 @@ namespace parraleism_vs_concurency
 int main()
 {
     //parraleism_vs_concurency::base_algorythm::run_me();
-    //parraleism_vs_concurency::base_algorythm_with_parallel_threads::run_me();
+    //doesnt work - parraleism_vs_concurency::base_algorythm_with_parallel_threads::run_me();
     //parraleism_vs_concurency::parallel_struct_passed_into_function::run_me();
-    //parraleism_vs_concurency::parallel_pthread_struct_passed_into_function::run_me_race_condition_on_struct_passed_into_thread();
+    //race condition - parraleism_vs_concurency::parallel_pthread_struct_passed_into_function::run_me_race_condition_on_struct_passed_into_thread();
     //parraleism_vs_concurency::last_one_fix::run_me_race_condition_on_struct_passed_into_thread();
     //parraleism_vs_concurency::copyt_from_yt_to_analize_raw::main();
     
@@ -336,5 +330,5 @@ int main()
             many values was made by create struct and pass it into thread as void*arg and recast 
             returned value was aquire by return that void*arg, and recast int struct and extract value
     */
-    parraleism_vs_concurency::copyt_from_yt_to_analize_switch_to_struct::main();
+    //parraleism_vs_concurency::copyt_from_yt_to_analize_switch_to_struct::main();
 }

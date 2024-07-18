@@ -1,5 +1,30 @@
+/*
+static function vs function in class
+write full ctor with move and assign
+write wrapper for raw prt
+read about pthreaad and what i wrote
 
+wait = =- (and run process) or if value ==0 then wait until is positive again
+post = =+ increment by 1
+to get access to shared resource it first have to go 
+    sem(default):       1
+    first wait:        -1  => 0
+    <work with shared resource> <if some other th want lock -have to wait>
+    afte work, post:    +1  =>1     (releasing a lock)
 
+we start:           producer=0 and consumer=1
+    first process on sem_consumer- will not wait, it will succesfully decrement
+    and run it
+
+consumer loop:
+    set_wait(sem_producer) - we will wait until it will produce something
+        retrive from shmm and print it
+    set_post(consumer) - 
+
+producer loop:
+    set_wait (sem_consumer) - hey it is you turn to access buffer
+        saving in smm
+    set_post (sem_producer) - hey we set something at memory ant its ready for consumption
 
 pthread
 Unlike a real process, the thread normally shares its memory with other threads
@@ -17,3 +42,12 @@ void* f_to_sum_part_of_arr3(void *arg)
     my_temp_struct =(my_args2*)arg;
     
 
+TODO
+0901 : ovr_simple_move_ctor_and_move_op fix it
+
+std::this_thread::get_id();  0300
+ std::thread t1(TransferMoney,10,std::ref(bill),std::ref(alex)); 0901
+
+
+
+*/

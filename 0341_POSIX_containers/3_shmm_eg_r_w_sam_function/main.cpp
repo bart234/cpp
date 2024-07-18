@@ -1,4 +1,4 @@
-#include "ch_6_.h"
+
 #include "ch_7_.h"
   
 
@@ -7,7 +7,7 @@
 int main()
 {
 
-    //chapter_6_cocurrent_sys_programing::run_me();
+
     //chapter_7_concurenncy_simple_and_linux_IPC::egzample_of_posix_msg_queue::run_me();
     //chapter_7_concurenncy_simple_and_linux_IPC::semaphores_in_use_simple::run_me();       //disabled: require gcc +11 and c+20 (tasks.json)
     //chapter_7_concurenncy_simple_and_linux_IPC::simple_mutex::run_me();
