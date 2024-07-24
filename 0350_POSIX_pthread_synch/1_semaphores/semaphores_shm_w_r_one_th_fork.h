@@ -1,4 +1,7 @@
-#ifdef MY_SOURCES_H 
+#ifndef MY_SOURCES_H
+#define MY_SOURCES_H
+#include "my_sources.h" 
+#endif
 
 using namespace std;
 
@@ -125,4 +128,3 @@ namespace semaphores_shm_w_r_one_th_fork
     }
 
 }
-#endif

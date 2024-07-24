@@ -1,4 +1,7 @@
-#ifdef MY_SOURCES_H
+#ifndef MY_SOURCES_H
+#define MY_SOURCES_H
+#include "my_sources.h" 
+#endif
 
 using namespace std;
 
@@ -111,4 +114,3 @@ namespace semaphores_on_pthread_void_arg_pth
         sem_destroy(&my_semaphore);
     }
 }
-#endif

@@ -1,6 +1,7 @@
 #ifndef MY_SOURCES_H
 #define MY_SOURCES_H
 #include "my_sources.h" 
+#endif
 
 using namespace std;
 
@@ -45,4 +46,3 @@ namespace semaphores_login_queue_void_pth
     }
 }
 
-#endif

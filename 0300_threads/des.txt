@@ -1,0 +1,25 @@
+/*
+- you dont know what thread will start first
+ once thread is started we have to wait to finish by calling join() - so if thread didnt finish calculate itself 
+between moment of std::thread ... and join() - we ahve to wait  until it will finish its calculations 
+- we can check if thread is jonable - if(t1.joinable()){t1.join()} - also if it is jonable you can detach it
+-if you forget join or detach - program will crash
+
+-detach - can detach  new thread from it parent (here t1 from maine)
+
+*/
+
+        //t1.join();                  //with join main thread(main()) will launch thread, after that will print "Main()" and when join, 
+                                    //will print counting and start to wait because of sleep, and after sleep will print after
+
+        t1.detach();                //if we detach t1 from main, main will not w8 for t1 - depend what thread will be first (we dont know which t will be 1th)
+                                    // main will print "Main" and "After" together  - and before t1 or after
+                                    //WARNING it is possible that one thread is faster , ans is fast enough to start and finish work  before another will even start
+                                    //and program will be closed before second thread ill start- it main thread will be faster then t1 - it will close os before
+                                    //t1 will even start
+                                    //
+
+  /*
+    mutex - have concept of ownership, and it expect to be closed in same thread, if you dont -> undefined bhw
+    semaphores - you can set wait and post in diffrent threads - more primitive then mutex
+    */
