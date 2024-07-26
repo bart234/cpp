@@ -1,0 +1,6 @@
+//spinlock: is blocking whole core for each thread , until resource is free
+//mutex: is better
+//atomic resource: is better
+//each technique inherit performance cost :
+//best achive: minimize switching, minimize performance and their scope
+//best achive: use existing mechanisms which are optimized before you start mixing all together

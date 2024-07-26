@@ -1,0 +1,12 @@
+1DESCRIPTION         top
+2mq_open() creates a new POSIX message queue or opens an existing
+3queue.  The queue is identified by name.  For details of the
+4construction of name, see mq_overview(7).
+5The oflag argument specifies flags that control the operation of
+6the call.  (Definitions of the flags values can be obtained by
+7including <fcntl.h>.)  Exactly one of the following must be
+8specified in oflag:
+9O_RDONLY
+10        Open the queue to receive messages only.
+11
+12O_WRONLY
