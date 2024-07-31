@@ -1,27 +1,8 @@
-/*
-sockets are for communictation between computers
+#ifndef SOURCES_H
+#define SOURCES_H
+#include "sources.h"
+#endif
 
-we can have faster udp or slowe tcp
-
-udp - user data protocole - only propagate, and do not focus on cheking if reciver got data
-
-tcp - slower byt more accurate, it check if data was recived correctly
-*/
-
-#include <array>
-#include <iostream>
-
-#include <fcntl.h>
-#include <unistd.h>
-#include <sys/socket.h>
-
-#include <arpa/inet.h>
-#include <netinet/in.h>
-
-using namespace std;
-
-constexpr auto PORT =       8072;
-constexpr auto BUF_SIZE =   16;
 
 int dice_roll()
 {
@@ -77,11 +58,10 @@ void process_creator()
 
 
         //process itself---------------------------------------------------------------------------------------
-        //here we have 
-
+        
         for(;;)
         {       
-            //request for new dice roll is recived  - bytes recived > 0
+            //when request for new dice roll is recived  - bytes recived > 0
             if(auto bytes_recived = recvfrom(   socket_file_descriptor,
                                                 buffer_arr_for_data.data(),
                                                 buffer_arr_for_data.size(),
@@ -91,33 +71,34 @@ void process_creator()
                     bytes_recived >=0)
             {
 
-            buffer_arr_for_data.data()[bytes_recived]='\0';
-            cout<<" Request recived: " <<buffer_arr_for_data.data()<<endl;
-            
+                buffer_arr_for_data.data()[bytes_recived]='\0';
+                cout<<" Request recived: " <<buffer_arr_for_data.data()<<endl;
+                
 
-                //compare - requestor sending 2 kind od messages 
-                //1th - start_resuest - to get data  from dice roll
-                //2nd - stop request - at the end, to finish communication 
-                //we roll dice and sendto
-                //MSG_WAITALL  -mean it will block calling process - usually when there is no incoming data
-                //in udp communication: no packet order, reciving 0 bytes (by recvfrom) is valid
-                if(start_request.compare(0,bytes_recived,buffer_arr_for_data.data())==0){
-                    string_view res_data{std::to_string(dice_roll())};
-                    cout<<"Producer: rolling dice - done"<<endl;
-                    sendto(socket_file_descriptor,
-                            res_data.data(),
-                            res_data.size(),
-                            MSG_WAITALL,
-                            (struct sockaddr*)&client_address,
-                            len_of_client_addres);
-                    cout<<"Producer: sending result - done"<<endl;
-                }
-                else 
-                {
-                    cout<<"Producer: communication end"<<endl;
-                    break;
-                }
+                    //compare - requestor sending 2 kind od messages 
+                    //1th - start_resuest - to get data  from dice roll
+                    //2nd - stop request - at the end, to finish communication 
+                    //we roll dice and sendto
+                    //MSG_WAITALL  -mean it will block calling process - usually when there is no incoming data
+                    //in udp communication: no packet order, reciving 0 bytes (by recvfrom) is valid
+                    if(start_request.compare(0,bytes_recived,buffer_arr_for_data.data())==0){
+                        string_view res_data{std::to_string(dice_roll())};
+                        cout<<"Producer: rolling dice - done"<<endl;
+                        sendto(socket_file_descriptor,
+                                res_data.data(),
+                                res_data.size(),
+                                MSG_WAITALL,
+                                (struct sockaddr*)&client_address,
+                                len_of_client_addres);
+                        cout<<"Producer: sending result - done"<<endl;
+                    }
+                    else 
+                    {
+                        cout<<"Producer: communication end"<<endl;
+                        break;
+                    }
 
+            //we dont recive request
             }else{
                 const auto ecode{make_error_code(errc{errno})};
                 cerr<<"Recive failed";
@@ -139,16 +120,18 @@ void process_creator()
         exit(EXIT_SUCCESS);
 
 
-    }else if (pid >0){ //for if pid !=0 - parent
+    }else if (pid >0){ //for if pid !=0  it is sever 
         int32_t number_of_dice_rolls;
         cout<<"Chose how many time would you like ot roll dice (1 to 256)"<<endl;
         cin>>number_of_dice_rolls;
-        //check boundries - skipped
+        //check boundries,isnumeric - skipped
 
         //
         if
         (
-            (socket_file_descriptor = socket(AF_INET,SOCK_DGRAM,0))<0   //carefull on things like that, withaout 1th bracket you will get wierd behavior
+            (socket_file_descriptor = socket(AF_INET,SOCK_DGRAM,0))<0   
+            //carefull on things like that, without 1th bracket you will get wierd behavior
+            //and fd will not load
         )
         {
            const auto ecode{make_error_code(errc{errno})};
@@ -163,7 +146,7 @@ void process_creator()
             //in loop it sending request for dice rolls
             // content of that msg is - give me dice roll 
             //MSG_DONT_WAIT - we just sending request here, we dont expect return msg here
-            //mean- rerutn msg - about they recive data, not reponse 
+            //mean- rerutn msg - about if they recive data, not reponse 
             if(auto b_sent = sendto(socket_file_descriptor,
                                     start_request.data(),
                                     start_request.size(),
@@ -224,15 +207,5 @@ void process_creator()
         throw exception;
 
     }
-
-
-
-
-}
-
-
-int main()
-{
-    process_creator();
-    return 0;
+    
 }

@@ -1,0 +1,9 @@
+Kinds of system times:
+
+-Jiffies - timer which start when system is booted, increment +1 by every tick of system
+-Real-Time Clock (RTC) - hardware clock, track date and time when systemis off, can be red from /dev/rtc
+-High-Resolution Timers (HRTs) - nanosecond resolution, used for mesure timing of code segments
+-POSIX Timers - defined by posix, have interface for time managment, can be use one time or for period, can be trigger by thread or signal
+-Timer queues - mechanism provider by linux kernel to schedule events and timeouts, 
+
+Linux epoch - time 0 - 01011970 00:00:00 UTC
