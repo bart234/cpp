@@ -1,0 +1,8 @@
+
+issue with pointers:
+- wild ptr - when ptr is on the stack but never associated with object
+- dangling ptr - when you remove pointer without freeing space 
+
+result: 
+    -memory fragmentation
+    -memory leaks   

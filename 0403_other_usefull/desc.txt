@@ -1,0 +1,9 @@
+
+Classes: virtual and override
+    - use virtual to classes and functions which should be overriten i derived class
+    - use final to make a statement " we no derive anymore from that"
+    - use override to make statment -"yep we overriden it, it is not functionality from parent"
+    - you canuse final at class declaration - class Abba final: public Beta
+
+
+
