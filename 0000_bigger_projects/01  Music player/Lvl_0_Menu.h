@@ -5,6 +5,11 @@
 
 class Menu_MainMenu:public MenuTemplate
 {
+    /*
+    First menu:
+    inherited template for display 1th menu
+    if user will chose some option is going into option class with same level like that menu
+    */
     public:
         Menu_MainMenu(std::shared_ptr<User> i_user):
                         MenuTemplate("Main Menu","Welcome in Play Me",i_user,true)
@@ -20,7 +25,7 @@ class Menu_MainMenu:public MenuTemplate
                 //create option to that menu - already as unique ptr
                 std::unique_ptr<OptionTemplate> ptr_1 {new  Option_1_About {"What is Play Me", 1,user_b}}; //text, number on the list
                 std::unique_ptr<OptionTemplate> ptr_2 {new  Option_2_LogIn {"Log in", 2,user_b,Settings_1::user_log_pass_list_path}};
-                std::unique_ptr<OptionTemplate> ptr_3 {new  Option_3_NewUser {"Im new user", 3,user_b}};
+                std::unique_ptr<OptionTemplate> ptr_3 {new  Option_3_NewUser {"Im new user(todo)", 3,user_b}};
                 
                 //add unique ptr as a option to menu
                 this->option_list[1]=std::move(ptr_1);

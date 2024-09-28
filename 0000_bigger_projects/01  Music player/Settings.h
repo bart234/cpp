@@ -61,9 +61,7 @@ namespace Setting
         std::string playlist_name_chars_acceptable ="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz_0123456789";               
         std::string playlist_name_chars_acceptable_descr =" big and small letters, spaces, numbers, and floor '_'";
         std::string playlist_creation_numbers_only = "0123456789";     
-
     }
-
 
     namespace DefaultFolderPaths
     {

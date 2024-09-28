@@ -10,7 +10,12 @@
     class Menu_MainMenu;
     class Menu_at_mm_opt1;
     
-    
+    /*
+    Option Template ia a base for all other opions
+    Option_MainMenu_Template - basic object to create option for menus
+    Option_ToPreviousMenu   - default option for each menu - standard object to create move to previious menu
+    Option_ExitApp          - default option for each menu - standard object to close all stack
+    */
     class OptionTemplate
     {                    
         

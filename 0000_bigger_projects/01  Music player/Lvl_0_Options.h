@@ -4,11 +4,19 @@
 #include "MP_auth.h"
 
 
+/*
+All option inherit from Option_MainMenu_Template
+All have to be custome
+Option 1: just display info
+Option 2: customed
 
+*/
 class Option_1_About:public Option_MainMenu_Template
     {   
         public:
-            Option_1_About(std::string i_description, int i_option_number,std::shared_ptr<User> i_user):
+            Option_1_About(std::string i_description,
+                            int i_option_number,
+                            std::shared_ptr<User> i_user):
                     Option_MainMenu_Template(i_description,i_option_number,i_user)
                     {};
             ~Option_1_About(){};
@@ -17,12 +25,10 @@ class Option_1_About:public Option_MainMenu_Template
                     {
                         //expected action - preapare menu behind option 1
                         std::cin.get();
+                        std::cout<<"------------------------------------- \n"<<std::endl;
                         std::cout<<"This is a basic app for  Music Player \n"<<std::endl;
+                        std::cout<<"------------------------------------- \n"<<std::endl;
                         std::cout<<"Please press any key to back to previous menu"<<std::endl;
-                        
-                        //std::shared_ptr<MenuTemplate> main_menu2 {new Menu_at_mm_opt1{}}; //include that menu as file
-                        //i_stack_of_menus.push(main_menu2);   
-
                     }
     };
     
@@ -32,7 +38,10 @@ class Option_2_LogIn:public Option_MainMenu_Template
         std::string i_user_login_pass_path{};
 
     public:
-        Option_2_LogIn(std::string i_description, int i_option_number,std::shared_ptr<User> i_user,std::string user_login_pass_path):
+        Option_2_LogIn(std::string i_description,
+                            int i_option_number,
+                            std::shared_ptr<User> i_user,
+                            std::string user_login_pass_path):
                 Option_MainMenu_Template(i_description,i_option_number,i_user),i_user_login_pass_path{user_login_pass_path}
                 {};
         ~Option_2_LogIn(){};

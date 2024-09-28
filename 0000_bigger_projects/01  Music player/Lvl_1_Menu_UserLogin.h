@@ -25,12 +25,12 @@ class Menu_user_logged_in:public MenuTemplate
         void prepare_menu()
             {                    
                 
-                std::unique_ptr<OptionTemplate> ptr_1 {new  Opt_play_last_song {"Opt_1_play_last_song", 1,user_b}};
-                std::unique_ptr<OptionTemplate> ptr_2 {new  Opt_play_last_pls {"Opt_2_play_last_pls", 2,user_b}};
-                std::unique_ptr<OptionTemplate> ptr_3 {new  Opt_open_user_playlists {"Opt_3_playlists (done)", 3,user_b}};
+                std::unique_ptr<OptionTemplate> ptr_1 {new  Opt_play_last_song {"Opt_1_play_last_song(todo)", 1,user_b}};
+                std::unique_ptr<OptionTemplate> ptr_2 {new  Opt_play_last_pls {"Opt_2_play_last_pls(todo)", 2,user_b}};
+                std::unique_ptr<OptionTemplate> ptr_3 {new  Opt_open_user_playlists {"Opt_3_playlists", 3,user_b}};
                 std::unique_ptr<OptionTemplate> ptr_4 {new  Opt_create_playlist {"Opt_4_create_playlist(in progress)", 4,user_b}}; //in progress
-                std::unique_ptr<OptionTemplate> ptr_5 {new  Opt_edit_playlist {"Opt_5_edit_playlist", 5,user_b}}; 
-                std::unique_ptr<OptionTemplate> ptr_6 {new  Opt_log_out {"Opt_6_log_out", 6,user_b}};
+                std::unique_ptr<OptionTemplate> ptr_5 {new  Opt_edit_playlist {"Opt_5_edit_playlist(todo)", 5,user_b}}; 
+                std::unique_ptr<OptionTemplate> ptr_6 {new  Opt_log_out {"Opt_6_log_out(todo)", 6,user_b}};
                 
                 //add unique ptr as a option to menu
                 this->option_list[1]=std::move(ptr_1);

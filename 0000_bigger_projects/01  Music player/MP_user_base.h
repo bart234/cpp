@@ -5,6 +5,12 @@
 
 class User_base
 {
+    /*
+    class for: keep user data - user name and user id 
+    have containers for: 
+        -user setting in map format
+        -last played objects (played_song and played_playlist)
+    */
     public:
         std::string name;
         int user_id{};
@@ -27,6 +33,9 @@ class User_base
         return *this;
     }
 
+
+
+};
      //operators - currently useless, list just keep string, not a opj with diff elements
     //bool operator ==(const std)
 
@@ -81,6 +90,6 @@ class User_base
 */
 
 
-};
+
 
 #endif
