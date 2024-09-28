@@ -8,6 +8,8 @@
 // how to build: std::bind(<function_name>, arg1-raw value or placeholder, arg2-...)
 //               can have 0 arg (all can be const numbers) or many args
 
+//similar function: std::tie
+
 using namespace std::placeholders; //it allow to get acces to variable _1, _2, _3...
 using namespace std;
 

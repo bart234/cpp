@@ -16,6 +16,6 @@ int main()
     //Abba a =static_cast<size_t>(2);
     //Abba b =3;
     size_t t =3;
-    Abba c(t)
+    Abba c(t);
 
 }

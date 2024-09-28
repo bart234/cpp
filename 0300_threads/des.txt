@@ -1,16 +1,13 @@
-/*
+
 - you dont know what thread will start first
- once thread is started we have to wait to finish by calling join() - so if thread didnt finish calculate itself 
-between moment of std::thread ... and join() - we ahve to wait  until it will finish its calculations 
+  once thread is started we have to wait to finish by calling join() - so if thread didnt finish calculate itself 
+  between std::thread ... and join() - we ahve to wait  until it will finish its calculations 
 - we can check if thread is jonable - if(t1.joinable()){t1.join()} - also if it is jonable you can detach it
--if you forget join or detach - program will crash
+- if you forget join or detach - program will crash
 
 -detach - can detach  new thread from it parent (here t1 from maine)
-
-*/
-
-        //t1.join();                  //with join main thread(main()) will launch thread, after that will print "Main()" and when join, 
-                                    //will print counting and start to wait because of sleep, and after sleep will print after
+  //t1.join();        //with join - main thread(main is a 1th thread) will launch thread, after that will print "Main()" and when join, 
+                      //will print counting and start to wait because of sleep, and after sleep will print after
 
         t1.detach();                //if we detach t1 from main, main will not w8 for t1 - depend what thread will be first (we dont know which t will be 1th)
                                     // main will print "Main" and "After" together  - and before t1 or after
@@ -19,7 +16,41 @@ between moment of std::thread ... and join() - we ahve to wait  until it will fi
                                     //t1 will even start
                                     //
 
-  /*
-    mutex - have concept of ownership, and it expect to be closed in same thread, if you dont -> undefined bhw
-    semaphores - you can set wait and post in diffrent threads - more primitive then mutex
-    */
+
+mutex - have concept of ownership, and it expect to be closed in same thread, if you dont -> undefined bhw
+semaphores - you can set wait and post in diffrent threads - more primitive then mutex
+
+Basics:
+- even one core procesor can symulate mutithreading, context switch is so fast that looks like work on multicore
+- approaches:
+    -divide program to many process , each one thread  (processes communicate between by normal interprocess communication chanells -signals,pipes,sockets-
+                                                        complicated,vey slow or both because operating system provide protection between processes,
+                                                        each proces starts slowly - system have to manage resource for them 
+                                                        but if handle you can launch processes on diffdrent machines)
+    -single process program and many threads          )lightwave process , each run independently, but.. threads share some space and addres, and global variables,
+                                                        it is possible to share data between threads - hadr to manage,
+                                                        
+    -divide program to many process, and each divide to many threads 
+- c++ do not provide any support for internal communication so each multiple processes have to base on API-s solutions
+- parralleism - when proces with two threads, on system with many cores,  take two cores, and each core execure only one thread 
+- concurency - when proces with two threads, on system with one core, take one core, and two threads switch to execution, it is longer because context switch and other processes
+- concurency and parralleism overlapping - both running multiple task sumulttaneously
+            - parralleism - perform-oriented
+            - concurency - concern of separationor responsivness oriented
+-concurency and performence , two approches:
+        - one: divide taks into parts and run each parallel,reducing total run time, migh=t be complext to do
+        - second: each thread will be process same soperation for diffrent part of data (data paralleism) - it will take same amount of time, but you will process much more data
+- embarrasing parallel - alghoritm  with from "one" approach with easy to divide int threas, great scalability - preffered way
+
+-when to use parralleism: when benefit ist worth cost (harder to undestand ,more experienced developers,additional complexity, more development time)
+- threads are limited resource, using too much exhaust system (availible memory, adresses space)
+
+History:
+until c++11 devs used system api for threading. There was not unified c++ approach to handle multithreading so each  because there wasnt necesseary,
+but there was api-s and external mods like boost.
+c++11 deliver thread model, stl was extended by thread classes, protection shared data, synchronizing operation between threads, atomic operations
+c++14 deliver new mutexes
+c++17 deliver alghoritms for parallel executions
+
+- wrapper to higher lever for multithreading result of cost in performence because abstraction, but that cost it quite small if we accept fact that 
+  all platform have now unified multithreading processes
