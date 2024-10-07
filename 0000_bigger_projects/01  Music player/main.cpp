@@ -20,7 +20,9 @@ int main()
     //std::pair<int,std::string> Playlist_I::CreateNewPlaylist(std::string path_to_pls_list_file) add --> std::cout<<"To cancel it type: cancel"<<std::endl;
     //test: MP_playlist_i.h -> CreateNewPlaylist (this->Load_pls_with_track_to_pick_for_everyone();)  -> excavate kind of error from deeper funcion    
     //TODO: simplify mp_user_base and mp_user_main - check what for is user base
-    //TODO: there is a error at user/user1 - fix that    
+    //DONE: there is a error at user/user1 - fix that - there was no folder for new user
+    //TODO: make files check and error handler if there is no files for user 
+    //TODO: during creating new user - create user folder with filees
     //TODO: move class Option_MainMenu_Template into another file , rename it
     //TODO: check if after login, at 1th menu I will make logout - will i still be loged in, or no
     //TODO: more space in make playlist, wyszczegolnic checki i psrawdzic czy wogole dzialaja

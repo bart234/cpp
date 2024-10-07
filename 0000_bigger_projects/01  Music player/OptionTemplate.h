@@ -22,8 +22,7 @@
         private:
             std::string option_description;
             int option_numer;  
-        public:
-            //std::queue<std::shared_ptr<MenuTemplate>> &main_queue;
+        public:            
             std::shared_ptr<User> user_b =nullptr; 
             
         public:
